@@ -54,7 +54,10 @@ module.exports = exports = function () {
 
     var manifest = require(env.modulePath)(manifestPath);
 
-    var indent = '    ';
+    var indent = {
+      l1: '  ',
+      get l2() { return this.l1+this.l1; }
+    };
 
     Object.keys(manifest.globs).forEach(function(key) {
       var dep = manifest.globs[key];
@@ -64,12 +67,12 @@ module.exports = exports = function () {
       if(key === 'js' || key === 'css') {
         dep.forEach(function(file) {
           console.log(
-            indent,
+            indent.l1,
             chalk.magenta(file.name)
           );
           file.globs.forEach(function(glob) {
             console.log(
-              indent,
+              indent.l2,
               chalk.blue(glob)
             );
           });
@@ -77,7 +80,7 @@ module.exports = exports = function () {
       } else {
         dep.forEach(function(file) {
           console.log(
-            indent,
+            indent.l1,
             chalk.blue(file)
           );
         });
