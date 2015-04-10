@@ -8,6 +8,7 @@ Pretty visualizations for asset-builder
 
 * `-v` or `--version` displays the CLI version and the local asset-builder version
 * `-m=<path>` or `--manifest=<path>` specify path to manifest file.
+* `--show-bower` show a raw list of the bower dependencies from main-bower-files
 
 ## Commands
 

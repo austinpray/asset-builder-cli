@@ -72,6 +72,9 @@ module.exports = exports = function() {
 
     Object.keys(manifest.globs).forEach(function(key) {
       var dep = manifest.globs[key];
+      if (key === 'bower' && !argv['show-bower']) {
+        return;
+      }
       console.log(
         chalk.magenta(key)
       );
