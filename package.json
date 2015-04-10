@@ -8,8 +8,8 @@
     "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "documentation": "npm run jsdoc && npm run docco",
     "jsdoc": "jsdoc -c jsdoc.json",
-    "jshint": "jshint lib/*.js index.js",
-    "jscs": "jscs lib/*.js index.js",
+    "jshint": "jshint index.js",
+    "jscs": "jscs index.js",
     "test": "mocha test"
   },
   "devDependencies": {

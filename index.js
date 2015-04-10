@@ -1,6 +1,9 @@
+'use strict';
+
 var Liftoff = require('liftoff');
 var argv = require('minimist')(process.argv.slice(2));
 var chalk = require('chalk');
+var moduleInfo = require('./package.json');
 
 // Fix stdout truncation on windows
 function exit(code) {
@@ -13,17 +16,25 @@ function exit(code) {
   process.exit(code);
 }
 
-module.exports = exports = function () {
+module.exports = exports = function() {
   var assetbuilder = new Liftoff({
     name: 'assetbuilder',
     processTitle: 'assetbuilder',
     moduleName: 'asset-builder',
     configName: 'asset-builder'
   });
-  var invoke = function (env) {
+  var invoke = function(env) {
     // https://www.youtube.com/watch?v=q6EoRBvdVPQ
     if (argv.YEE) {
       console.log(chalk.green('yee'));
+      exit(0);
+    }
+
+    if (argv.v || argv.version) {
+      console.log('cli version:', moduleInfo.version);
+      if (env.modulePackage && env.modulePackage.version) {
+        console.log('local asset-builder:', env.modulePackage.version);
+      }
       exit(0);
     }
 
@@ -43,7 +54,7 @@ module.exports = exports = function () {
 
     var manifestPath = argv.m || argv.manifest || config.manifest;
 
-    if(!manifestPath) {
+    if (!manifestPath) {
       console.log(chalk.red('You need to specify a manifest path.'));
       console.log(
         chalk.red('Try running:'),
@@ -56,7 +67,7 @@ module.exports = exports = function () {
 
     var indent = {
       l1: '  ',
-      get l2() { return this.l1+this.l1; }
+      get l2() { return this.l1 + this.l1; }
     };
 
     Object.keys(manifest.globs).forEach(function(key) {
@@ -64,7 +75,7 @@ module.exports = exports = function () {
       console.log(
         chalk.magenta(key)
       );
-      if(key === 'js' || key === 'css') {
+      if (key === 'js' || key === 'css') {
         dep.forEach(function(file) {
           console.log(
             indent.l1,
@@ -86,8 +97,6 @@ module.exports = exports = function () {
         });
       }
     });
-
-
   };
 
   assetbuilder.launch({
@@ -97,4 +106,4 @@ module.exports = exports = function () {
     completion: argv.completion
   }, invoke);
 
-}
+};
