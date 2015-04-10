@@ -1,13 +1,11 @@
 'use strict';
 
-var chai            = require('chai');
-var assert          = chai.assert;
-var expect = require('chai').expect;
-
-var child = require('child_process');
-
+var chai       = require('chai');
+var assert     = chai.assert;
+var expect     = require('chai').expect;
+var child      = require('child_process');
 var cliVersion = require('../package.json').version;
-var abVersion = require('asset-builder/package.json').version;
+var abVersion  = require('asset-builder/package.json').version;
 
 describe('flag: --version and -v', function() {
   it(
