@@ -54,8 +54,6 @@ module.exports = exports = function () {
 
     var manifest = require(env.modulePath)(manifestPath);
 
-    console.log(manifest);
-
     var indent = '    ';
 
     Object.keys(manifest.globs).forEach(function(key) {
