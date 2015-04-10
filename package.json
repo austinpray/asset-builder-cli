@@ -1,6 +1,6 @@
 {
   "name": "asset-builder-cli",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "Pretty visualizatoins for asset-builder",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,9 @@
     "mocha": "*",
     "asset-builder": "*"
   },
+  "bin": {
+    "assetbuilder": "bin/asset-builder-cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/austinpray/asset-builder-cli.git"
@@ -29,5 +32,10 @@
   "bugs": {
     "url": "https://github.com/austinpray/asset-builder-cli/issues"
   },
-  "homepage": "https://github.com/austinpray/asset-builder-cli"
+  "homepage": "https://github.com/austinpray/asset-builder-cli",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "liftoff": "^2.0.3",
+    "minimist": "^1.1.1"
+  }
 }
